@@ -1,3 +1,7 @@
+#include <deepstate/DeepState.hpp>
+
+using namespace deepstate;
+
 #include <assert.h>
 
 int vulnfunc(int32_t intInput, char * strInput) {
@@ -6,10 +10,8 @@ int vulnfunc(int32_t intInput, char * strInput) {
    crash();
 }
 
-int main(int argc, char* argv[]) {
-   char buf[9];
-   int fd = open(argv[1], O_RDONLY);
-   read(fd, buf, sizeof(buf) - 1);
+TEST(FromEclipser, CrashIt) {
+   char buf[9] = (char*)DeepState_Malloc(9);
    buf[8] = 0;
    vulnfunc(*((int32_t*) &buf[0]), &buf[4]);
    return 0;
