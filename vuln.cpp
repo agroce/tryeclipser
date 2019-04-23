@@ -6,8 +6,8 @@ using namespace deepstate;
 
 int vulnfunc(int32_t intInput, char * strInput) {
    if (2 * intInput + 1 == 31337)
-   if (strcmp(strInput, "Bad!") == 0)
-   crash();
+      if (strcmp(strInput, "Bad!") == 0)
+         assert(0);
 }
 
 TEST(FromEclipser, CrashIt) {
