@@ -15,5 +15,5 @@ TEST(FromEclipser, CrashIt) {
    char *buf = (char*)DeepState_Malloc(9);
    buf[8] = 0;
    vulnfunc(*((int32_t*) &buf[0]), &buf[4]);
-   free(buf)
+   free(buf);
 }
